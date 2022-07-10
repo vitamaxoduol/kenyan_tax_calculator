@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    crossorigin="anonymous"
+  />
+    <link rel="stylesheet" href="./assets/index.css">
+    <title>Kenyan PAYE Calculator</title>
+</head>
+
+<body>
+  <h1><strong> Kra PAYE Calculator </strong></h1>
+
+ <div class="outputs_holder">
+      <div id="output">
+    <img src="./assets/images.jpeg" alt="taximage">
+  </div>
+  <div id="display"></div>
+</div>
+    <section class="salary-output">
+        <section class="salary">
+            <div class="row">
+                <div class="text">
+                    Pay Period :
+                </div>
+                <form action="">
+                    <input type="checkbox" name="period" id="month" onclick="onlyOne(this)">
+                    <label for="">Month</label>
+
+                    <input type="checkbox" name="period" id="year" onclick="onlyOne(this)">
+                    <label for="">Year</label>
+                </form>
+            </div>
+            <div class="row">
+                <div class="text">
+                    Basic Salary :
+                </div>
+                <div class="salaryKSH">
+                    <input type="text" name="my-input" id="ksh" value="0">
+                    <label for="ksh">Ksh</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text">
+                    Benefits (Bonus Allowances) :
+                </div>
+                <div class="salaryKSH">
+                    <input type="text" name="my-input" id="kshbonus" value="0">
+                    <label for="ksh">Ksh</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text">
+                    Deduct NHIF
+                </div>
+                <form action="">
+                    <input type="checkbox" name="nhif" id="yesnhif" onclick="checknhif(this)">
+                    <label for="">Yes</label>
+
+                    <input type="checkbox" name="nhif" id="nonhif" onclick="checknhif(this)">
+                    <label for="year">No</label>
+                </form>
+            </div>
+            <div class="row">
+                <div class="text">
+                    NSSF Rates
+                </div>
+                <div>
+                    <div>
+                        <input type="checkbox" name="nssf" id="newnssf" onclick="checknssf(this)">
+                        <label for=''>New NSSF Rates (Tiered)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="nssf" id="oldnssf" onclick="checknssf(this)">
+                        <label for="year">Old NSSF Rates (KSH200)</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="text">
+                    Deduct NSSF :
+                </div>
+                <form action="">
+                    <input type="checkbox" name="yesno" id="yesnssf" onclick="yesOrNonssf(this)">
+                    <label for="">Yes</label>
+
+                    <input type="checkbox" name="yesno" id="nonssf" onclick="yesOrNonssf(this)">
+                    <label for="year">No</label>
+                </form>
+            </div>
+            <button id="button">
+                Calculate
+            </button>
+        </section>
+        <section class="output">
+            <div class="row-output">
+                <div class="column-1">
+                    Income before Pension Deductions
+                </div>
+                <div class="column-2" >
+                    <p>Ksh <span id="income">00</span></p>
+                </div>
+
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Deductible NSSF Pension Contribution
+                </div>
+                <div class="column-2" id="nssf">
+                    <p>Ksh <span id="nssfOut">00</span></p>
+
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                  Income after Pension Deductions
+                </div>
+                <div class="column-2" id="incomeSubPension">
+                    <p>Ksh <span id="incomeAfterPension">00</span></p>
+
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Benefits in Kind
+                </div>
+                <div class="column-2" >
+                    <p>Ksh <span id="benefits" >00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Taxable Income
+                </div>
+                <div class="column-2" id="taxedIncome">
+                    <p>Ksh <span id="taxincome">00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Tax On Taxable Income
+                </div>
+                <div class="column-2">
+                    <p>Ksh <span id="taxPayed">00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Personal Relief
+                </div>
+                <div class="column-2">
+                    <p>KSH <span id="relief">00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Tax Net Off Relief
+                </div>
+                <div class="column-2">
+                    <p>Ksh <span id="taxreleif">00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    PAYE
+                </div>
+                <div class="column-2">
+                    <p>Ksh <span id="paye">00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Chargeable Income
+                </div>
+                <div class="column-2">
+                    <p>Ksh <span id="chargeable">00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    NHIF Contribution
+                </div>
+                <div class="column-2">
+                    <p>Ksh <span id="nhifOut">00</span></p>
+                </div>
+            </div>
+            <div class="row-output">
+                <div class="column-1">
+                    Net 
+                </div>
+                <div class="column-2">
+                    <p>Ksh <span id="net">00</span></p>
+            </div>
+        </section>
+        
+    </section>
+   
+    <footer>
+      <div class="footer">
+        <a href="https://github.com/vitamaxoduolCalculator"
+          ><p>Created by VitamaxOduol</p></a
+        >
+      </div>
+    </footer>
+    <script src="./assets/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+body, button{
+    font-family: 'Nunito Sans';
+    font-weight: bolder;
+    background-color: rgb(165, 142, 42);
+}
+    
+.salary{
+padding: 30px 30px 30px;
+padding-bottom: 30px;
+background: none;
+border-radius: 5px;
+width: 450px;
+height: 400px;
+margin: 30px 30px 30px;
+}
+.row{
+display: grid;
+  grid-template-columns: 200px 250px ;
+  height: 60px;
+}
+#ksh{
+width:100px; 
+height:25px;
+}
+#button{
+    margin-left: 80px;
+    padding: 8px 100px;
+    background: aquamarine;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.salary-output{
+    display: grid;
+    grid-template-columns: 600px  400px;
+}
+.output{
+    background: rgb(165, 142, 42);
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.row-output:first-child{
+    border-top:0.2px solid black ;
+
+}
+.row-output{
+    display: grid;
+  grid-template-columns: 200px 250px ;
+  height: 50px;
+  border: 0.2px solid black;
+  border-top: none;
+
+}
+.column-2{
+    border-left: 1px solid black;
+}
+.column-2 > p {
+    padding-left: 15px;
+    font-weight: bolder;
+    color: black;
+
+}
+
+@media screen and (max-width: 720px){
+    .salary-output{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 300px  300px;
+        margin-left: 4px;
+        margin-right: 4px;
+
+    }
+    .salary{
+        width: 270px;
+        margin-left: 0px;
+        margin-right:0px;
+    }
+    .output{
+        width: 320px;
+    }#ksh{
+        width: auto;
+    }.row{
+        grid-template-columns: auto;
+    }
+    #button{
+        margin-left: 20px;
+        padding: 8px 50px;
+        margin-right:0px;
+
+    }
+    .row-output{
+        grid-template-columns: 150px auto ;
+        height: auto;
+        width: auto;
+    }
+    body{
+        margin-right: 0px;
+    }
+} 
